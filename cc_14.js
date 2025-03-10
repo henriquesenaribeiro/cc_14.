@@ -56,3 +56,41 @@ document.addEventListener("DOMContentLoaded", () => {
     });
     // Logs a message when a ticket is clicked, demonstrating event bubbling
 
+    // Task 5: Inline Editing of Support Tickets
+    function enableEditing(ticket, nameElement, issueElement, priorityElement, editButton) {
+        const nameInput = document.createElement("input");
+        nameInput.value = nameElement.textContent;
+        
+        const issueInput = document.createElement("input");
+        issueInput.value = issueElement.textContent;
+        
+        const priorityInput = document.createElement("input");
+        priorityInput.value = priorityElement.textContent.replace("Priority: ", "");
+
+        const saveButton = document.createElement("button");
+        saveButton.textContent = "Save";
+        saveButton.addEventListener("click", () => {
+            nameElement.textContent = nameInput.value;
+            issueElement.textContent = issueInput.value;
+            priorityElement.textContent = `Priority: ${priorityInput.value}`;
+            
+            ticket.replaceChild(nameElement, nameInput);
+            ticket.replaceChild(issueElement, issueInput);
+            ticket.replaceChild(priorityElement, priorityInput);
+            ticket.replaceChild(editButton, saveButton);
+        });
+
+        ticket.replaceChild(nameInput, nameElement);
+        ticket.replaceChild(issueInput, issueElement);
+        ticket.replaceChild(priorityInput, priorityElement);
+        ticket.replaceChild(saveButton, editButton);
+    }
+    // Enables editing of ticket details using input fields and a save button
+
+    // Example usage
+    addSupportTicket("Fabiana Requena", "Denied", "High");
+    addSupportTicket("Sophia Kirschner", "Accepted", "Medium");
+
+    highlightHighPriorityTickets(); // Apply highlighting after tickets are added
+});
+
