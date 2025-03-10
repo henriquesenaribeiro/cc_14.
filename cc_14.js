@@ -50,3 +50,9 @@ document.addEventListener("DOMContentLoaded", () => {
     }
     // Highlights high-priority tickets by changing their border and background color
 
+    // Task 4: Implementing Ticket Resolution with Event Bubbling
+    ticketContainer.addEventListener("click", () => {
+        console.log("A ticket was clicked.");
+    });
+    // Logs a message when a ticket is clicked, demonstrating event bubbling
+
