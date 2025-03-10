@@ -39,3 +39,14 @@ document.addEventListener("DOMContentLoaded", () => {
         ticketContainer.appendChild(ticket);
     }
     // Adds support tickets dynamically to the container
+
+    // Task 3: Converting NodeLists to Arrays for Bulk Updates
+    function highlightHighPriorityTickets() {
+        const highPriorityTickets = Array.from(document.querySelectorAll(".high-priority"));
+        highPriorityTickets.forEach(ticket => {
+            ticket.style.border = "2px solid red";
+            ticket.style.backgroundColor = "#ffe6e6";
+        });
+    }
+    // Highlights high-priority tickets by changing their border and background color
+
